@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Adi_Airlines</title>
+        
+        <style>
+        	.display{
+		 	margin-left: auto;
+		 	margin-right: auto;
+			background-color: #0066ff;
+			height: 50px;
+  			width: 400px;
+  			color:white;
+  			
+  			font-weight: bold;
+  			text-align:center;
+		}
+		
+		.book{
+			margin-left: auto;
+		 	margin-right: auto;
+		
+		}
+		
+		.header{
+			color:#0066ff;
+
+			text-align:center;
+		}
+		
+		.form-group{
+			margin-left: auto;
+		 	margin-right: auto;
+		
+		}
+        	table {
+			  font-family: arial, sans-serif;
+			  border-collapse: collapse;
+			  width: 100%;
+			}
+
+			td, th {
+			  border: 1px solid #dddddd;
+			  text-align: left;
+			  padding: 8px;
+			}
+
+			tr:nth-child(even) {
+			  background-color: #dddddd;
+			}
+        	.center {
+		  display: block;
+		  margin-left: auto;
+		  margin-right: auto;
+		  width: 1000px;
+		}
+		.button {
+		  background-color: none;
+		  border-style: solid 5px;
+  		  border-color: #0066ff;
+		  color: #0066ff;
+		  padding: 12px 28px;
+		  text-align: center;
+		  text-decoration: none;
+		  display: inline-block;
+		  font-size: 16px;
+		  margin: 4px 2px;
+		  cursor: pointer;
+		}
+		
+		h1,h3{
+		  text-align:center;
+		}
+		
+		
+		img {
+  		  opacity: 0.5;
+		}
+		
+		
+	</style>	
+	
+
+    </head>
+    <body>
+
+    	<div class=img_container">
+    	<div class="header">
+	<h1>Adi Airlines</h1>
+<h3>______________________________________________________________________________________________________________</h3>
+    	</div>    
+
+
+		<div class="display">
+			<h1> Departure </h1> 
+
+		</div>
+						     </br>
+		<div class="table">
+			<table>
+			  <tr>
+			    <th>ORIGIN</th>
+			    <th>DESTINATION</th>
+			    <th>DURATION</th>
+			  </tr>
+			 {% for flight in flights %}
+				 <tr>
+				 <td>{{flight.origin}}</td>
+				 <td>{{flight.destination}}</td>
+			         <td>{{flight.duration}}</td>
+				 </tr>
+			 {% endfor %} 
+			</table>
+				
+				
+		</div>
+    	    <div class="header">
+	
+<h3>______________________________________________________________________________________________________________</h3>
+    	</div>    
+
+		</br>
+
+		
+		
+		<div class="book">
+		<div class="display">
+		<h1>Book a Flight</h1>
+		</div>
+
+		    <center><form action="{{ url_for('book') }}" method="post">
+			    </br>
+			<div class="form-group">
+			  Flight:  <select class="form-control" name="flight_id">
+				{% for flight in flights %}
+				    <option value="{{ flight.id }}">{{ flight.origin }} to {{ flight.destination }}</option>
+				{% endfor %}
+			    </select>
+
+			    	<input class="form-control" name="name" placeholder="Passenger Name">
+			</div>
+
+			
+
+			
+			    </br>
+			<div class="form-group">
+			     <button class="button">Book Flight</button>
+			</div>
+
+		    </form></center>
+		</div>
+		
+		
+
+	</div>
+			    
+        
+    </body>
+</html>
+
+
+
+
+
+
